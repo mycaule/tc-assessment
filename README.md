@@ -19,14 +19,14 @@ sbt test
 
 ### Find missing elements
 
-The idea of the solution is to recreate a list of all contiguous possible values and then eliminate the elements from the original array (sieve of Erathosthenes).
+The idea of the solution is to recreate a list of all contiguous possible values and then eliminate the elements from the original array (similar to the sieve of Erathosthenes).
 
 Scala `Set` would be the best structure to constrain the algorithm as the order of the output elements are not defined by a specific rule. The `Set` structure guarantees that there are no duplicates.
 
-If you constrain the output to be sorted that solution doesn't use sets :
+If you constrain the output to be sorted this solution doesn't use sets :
 
 ```scala
-(arr.min to arr.max).filterNot(arr.contains(_))
+(arr.min to arr.max).filterNot(arr.contains).toArray
 ```
 
 | Description                  | Cost   | Comments                             |
@@ -38,7 +38,7 @@ If you constrain the output to be sorted that solution doesn't use sets :
 
 *K* is the length of the original list, *N* = *Max* - *Min*.
 
-Overall complexity is *O(N)* in both cases. Memory needed is *O(N)* although twice memory is needed in the case we use `Set`.
+Overall complexity is *O(N)* in both cases. Memory needed is *O(N)* although twice memory is needed when we use `Set`.
 
 ### Find distinct count
 
@@ -48,7 +48,12 @@ Complexity is *O(N)*, but for 30 days of data from big traffic website, the amou
 
 A modern technique is to distribute the data between a cluster of machines, to count the distinct values on each machine and reassemble the results. Spark is a framework to do parallel computing and provides a library to do it in Scala.
 
-We provide an implementation in the `Exo2Spark` object.
+We provide an implementation in the `Exo2Spark` object using a Resilient Distributed Dataset to parallelize and compute the result with just two lines of Spark code.
+
+```
+val rdd = sc.parallelize(arr)
+rdd.distinct.count
+```
 
 ### References
 
