@@ -1,8 +1,18 @@
+
+<p align="center">
+  March 2018 TC Interview Assessment
+</p>
+
+<p align="center">
+  <a href="http://travis-ci.org/mycaule/tc-assessment"><img src="https://api.travis-ci.org/mycaule/tc-assessment.svg?branch=master" alt="Build Status"></a>
+  <br>
+  <br>
+</p>
+
+
 ## Running the project
 ```
-sbt
-run
-~test
+sbt test
 ```
 
 ## Comments on the assignment
