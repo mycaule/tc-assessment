@@ -17,6 +17,9 @@ sbt test
 
 ## Comments on the assignment
 
+Most solutions to the problems are one-liners written in functional programming style.
+References to the actual underlying implementation in Scala are given as comments, these are (hopefully !) optimized by the Scala developers.
+
 ### Find missing elements
 
 The idea of the solution is to recreate a list of all contiguous possible values and then eliminate the elements from the original array (similar to the sieve of Erathosthenes).

@@ -3,6 +3,8 @@ package mycaule
 object Exo2 extends Counter {
   def countDistinct(arr: Array[Long]): Long = {
     arr.distinct.size
+    // See imperative implementation at https://github.com/scala/scala/blob/2.13.x/src/library/scala/collection/SeqLike.scala#L503-L517
+
     // Or similarly,
     // arr.toSet.size
   }
