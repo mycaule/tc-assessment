@@ -17,7 +17,9 @@ object Exo2Spark extends Counter {
 
   def countDistinct(arr: Array[Long]): Long = {
     val rdd = sc.parallelize(arr)
-    rdd.distinct.count
+    rdd.countApproxDistinct()
+
+    // See actual implementation at https://github.com/apache/spark/blob/master/core/src/main/scala/org/apache/spark/rdd/RDD.scala#L1252-L1266
   }
 }
 

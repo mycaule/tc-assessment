@@ -51,11 +51,11 @@ Complexity is *O(N)*, but for 30 days of data from big traffic website, the amou
 
 A modern technique is to distribute the data between a cluster of machines, to count the distinct values on each machine and reassemble the results. Spark is a framework to do parallel computing and provides a library to do it in Scala.
 
-We provide an implementation in the `Exo2Spark` object using a Resilient Distributed Dataset to parallelize and compute the result with just two lines of Spark code.
+We provide an implementation in the `Exo2Spark` object using a Resilient Distributed Dataset to parallelize and compute the result with just two lines of Spark code. it uses HyperLogLog algorithm under the hood.
 
 ```
 val rdd = sc.parallelize(arr)
-rdd.distinct.count
+rdd.countApproxDistinct()
 ```
 
 ### References
@@ -65,3 +65,6 @@ Some links on the documentation to go further.
 - [Scala - Arrays](https://docs.scala-lang.org/overviews/collections/arrays.html)
 - [Scala - Sets](https://docs.scala-lang.org/overviews/collections/sets.html)
 - [Scala - Performance Characteristics](https://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
+
+On the count distinct problem,
+- [Count distinct problem](https://en.wikipedia.org/wiki/Count-distinct_problem)
